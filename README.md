@@ -8,6 +8,10 @@
 -Login/Sign Up
     -Sign In/Sign up Form
     -redirect to Browse Page
+    -Create login form
+    -Create Sign Up form
+    -Form Validations
+
 
 -Browse(after authentication)
     -Header
@@ -20,3 +24,11 @@
 -NetflixGPT
     -Search Bar
     -Movie Suggestions
+
+
+    npm i -D react-router-dom
+
+# Notes:
+    <!-- if we want to build form which contains lots of fields use FORMIK -->
+
+
