@@ -8,6 +8,14 @@
 -SignUp Form
 -Form Validations
 -useRef Hook
+-Firebase Setup
+-Deploying our app to production
+-Create signup user account
+-Implement sigin user api
+-Created redux store with user slice
+-Implement Sign Out
+-Update Profile
+-Fetch from TMDB Movies
 
 # Features
 
@@ -39,3 +47,6 @@
     <!when form is used it tries to click on a button it calls on submit method of the form , and refreshes the page e.preventDefault() is used to prevent >
 
 # Firebase for authentication using google firebase
+
+npm i -D @reduxjs/toolkit
+npm i react-redux

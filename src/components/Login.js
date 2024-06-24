@@ -1,13 +1,25 @@
 import React, { useState, useRef } from "react";
 import Header from "./Header";
 import { checkvalidData } from "../utils/validate";
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { addUser, removeUser } from "../utils/userSlice";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const email = useRef(null);
   const password = useRef(null);
+  const name = useRef(null);
 
   const toggleSignInForm = () => {
     setIsSignInForm(!isSignInForm);
@@ -19,6 +31,70 @@ const Login = () => {
     //console.log(message);
     // console.log(email.current.value);
     // console.log(password.current.value);
+
+    if (message) return;
+    // signin or signup
+    if (!isSignInForm) {
+      //sign up logic
+
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          updateProfile(user, {
+            displayName: name.current.value,
+            photoURL:
+              "https://media.licdn.com/dms/image/D5603AQEyua_ZcxLdoQ/profile-displayphoto-shrink_200_200/0/1719222743116?e=1724889600&v=beta&t=aFN3dZqbfKZGDRSPBRrXQskRvffYLi6jY9CSH8hVtbI",
+          })
+            .then(() => {
+              // Profile updated!
+              // ...
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
+              navigate("/browse");
+            })
+            .catch((error) => {
+              // An error occurred
+              // ...
+              setErrorMessage(error.message);
+            });
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + "-" + errorMessage);
+        });
+    } else {
+      //sign in logic
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+          navigate("/browse");
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + "-" + errorMessage);
+        });
+    }
   };
 
   return (
@@ -40,6 +116,7 @@ const Login = () => {
 
         {!isSignInForm && (
           <input
+            ref={name}
             type="text"
             placeholder="Full Name"
             className="p-4 my-4 bg-gray-700 w-full"
