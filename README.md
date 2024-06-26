@@ -30,6 +30,8 @@
 -Update store with trailer video data
 -Embedded the youtube video Make it autoplay and mute
 -Added tailwind css
+-Build secondary component
+-Build movie list with now playing,popular,upcoming movies using custom hooks 
 
 # Features
 
