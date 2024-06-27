@@ -8,8 +8,9 @@ import {
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
-import { addUser, removeUser } from "../utils/userSlice";
+import { addUser } from "../utils/userSlice";
 import { USER_AVATAR } from "../utils/constant";
+import { BG_URL } from "../utils/constant";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -82,7 +83,7 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
+          // console.log(user);
           // ...
         })
         .catch((error) => {
@@ -97,10 +98,7 @@ const Login = () => {
     <div>
       <Header />
       <div className="absolute">
-        <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/a56dc29b-a0ec-4f6f-85fb-50df0680f80f/2f8ae902-8efe-49bb-9a91-51b6fcc8bf46/IN-en-20240617-popsignuptwoweeks-perspective_alpha_website_large.jpg"
-          alt="netflix-image"
-        />
+        <img src={BG_URL} alt="netflix-image" />
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}

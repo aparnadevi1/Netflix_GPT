@@ -21,17 +21,25 @@
 -Fetch from TMDB Movies
 -Add hard coded values to constant file
 -Register TMDB API,Create an app and get access token
--Get Data from TMDB 
+-Get Data from TMDB
 -Putting data into redux store
 -Created custom hook for now playing movies
 -Update store with movies data
--Planning for main container and secondary container 
+-Planning for main container and secondary container
 -Fetch data for trailer video
 -Update store with trailer video data
 -Embedded the youtube video Make it autoplay and mute
 -Added tailwind css
 -Build secondary component
--Build movie list with now playing,popular,upcoming movies using custom hooks 
+-Build movie list with now playing,popular,upcoming movies using custom hooks
+-Build movie card
+-TMDB IMG CDN URL
+-Made the Browse page look like figma
+-Created usePopulaMovies,useUpComingMovies custom Hook
+-GPT search feature
+-Created GPT search bar
+-Multi Language feature in our app
+-Integrate GPT API's
 
 # Features
 
