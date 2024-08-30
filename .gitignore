@@ -7,5 +7,6 @@
 
 # testing
 /coverage
+.env
 
 # productiongit remote add origin https://github.com/aparnadevi1/netflix.git
