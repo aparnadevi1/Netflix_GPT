@@ -40,6 +40,16 @@
 -Created GPT search bar
 -Multi Language feature in our app
 -Integrate GPT API's
+-Get OPEN AI Api Key
+-Gpt Search API call
+-fetched gptMoviesSuggestions from TMDB
+-created gptSlice added data
+-Reused Movie List component to make movie suggestiob container
+-Memoization
+-Added .env file
+-Adding .env file yo gitignore
+-Made our site responsive
+
 
 # Features
 
